@@ -40,7 +40,3 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
    totalAmount = +(payment * countMonths).toFixed(2);
   return(totalAmount)
 }
-calculateTotalMortgage(10, 0, 50000, 12)
-calculateTotalMortgage(10, 1000, 50000, 12)
-calculateTotalMortgage(10, 0, 20000, 24)
-calculateTotalMortgage(10, 1000, 20000, 24)
