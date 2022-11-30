@@ -1,21 +1,18 @@
 "use strict";
 function solveEquation(a, b, c) {
-  let arr = [];
-  let D;
+  const arr = [];
+  let discriminant;
   let x;
   let y;
-  D = b**2 - 4*a*c;
-  if (D > 0) {
-    x = (-b + Math.sqrt(D) ) / (2*a);
-    y = (-b - Math.sqrt(D) ) / (2*a);
+  discriminant = b**2 - 4*a*c;
+  if (discriminant > 0) {
+    x = (-b + Math.sqrt(discriminant) ) / (2*a);
+    y = (-b - Math.sqrt(discriminant) ) / (2*a);
     arr.push(x,y);
   }
-  if (D === 0) {
+  if (discriminant === 0) {
     x = -b / (2*a);
     arr.push(x);
-  }
-  if (D < 0) {
-    arr.push();
   }
   return arr;
 }
@@ -24,12 +21,26 @@ function solveEquation(a, b, c) {
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   let bodyCredit;
   let payment;
-  isNaN(percent);
-  isNaN(contribution);
-  isNaN(amount);
-  percent = (percent / 100) / countMonths;
+  let totalAmount;
+ if (isNaN(percent)) {
+  alert(`Параметр "percent" содержит не правильное значение "${percent}"`)
+ };
+ if (isNaN(contribution)) {
+  alert(`Параметр "contribution" содержит не правильное значение "${contribution}"`)
+ };
+ if (isNaN(amount)) {
+  alert(`Параметр "amount" содержит не правильное значение "${amount}"`)
+ };
+ if (isNaN(countMonths)) {
+  alert(`Параметр "countMonths" содержит не правильное значение "${countMonths}"`)
+ };
+  percent = (percent / 100) / 12;
   bodyCredit = amount - contribution;
   payment = bodyCredit * (percent + (percent / (((1 + percent)**countMonths) - 1)));
-  totalAmount = (payment * countMonths).toFixed(2);
-  return totalAmount;
+   totalAmount = +(payment * countMonths).toFixed(2);
+  return(totalAmount)
 }
+calculateTotalMortgage(10, 0, 50000, 12)
+calculateTotalMortgage(10, 1000, 50000, 12)
+calculateTotalMortgage(10, 0, 20000, 24)
+calculateTotalMortgage(10, 1000, 20000, 24)
