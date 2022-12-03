@@ -22,21 +22,17 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   let bodyCredit;
   let payment;
   let totalAmount;
- if (isNaN(percent)) {
-  alert(`Параметр "percent" содержит не правильное значение "${percent}"`)
- };
- if (isNaN(contribution)) {
-  alert(`Параметр "contribution" содержит не правильное значение "${contribution}"`)
- };
- if (isNaN(amount)) {
-  alert(`Параметр "amount" содержит не правильное значение "${amount}"`)
- };
- if (isNaN(countMonths)) {
-  alert(`Параметр "countMonths" содержит не правильное значение "${countMonths}"`)
- };
+  if (
+    isNaN(percent) || 
+    isNaN(contribution) ||
+    isNaN(amount) ||
+    isNaN(countMonths) 
+    ) {
+      return false
+    }
   percent = (percent / 100) / 12;
   bodyCredit = amount - contribution;
   payment = bodyCredit * (percent + (percent / (((1 + percent)**countMonths) - 1)));
-   totalAmount = +(payment * countMonths).toFixed(2);
+  totalAmount = +(payment * countMonths).toFixed(2);
   return(totalAmount)
 }
