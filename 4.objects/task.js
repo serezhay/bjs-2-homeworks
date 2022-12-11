@@ -8,22 +8,10 @@ function Student(name, gender, age, ...marks) {
 Student.prototype.setSubject = function (subjectName) {
     this.subject = subjectName;
 }
-/*
- it("Добавление группы оценок addMarks работает корректно", () => {
-    let student = new Student("Василиса", "женский", 19);
-    
-    expect(student.marks).toEqual([]);
 
-    student.addMarks(5, 4, 5);
-    expect(student.marks).toEqual([5, 4, 5]);
-
-    student.addMarks(5, 4, 5);
-    expect(student.marks).toEqual([5, 4, 5, 5, 4, 5]);
-  });
-*/
 Student.prototype.addMarks = function (...marksToAdd) {
-    if (Student.hasOwnProperty('marks')) {
-        this.addMarks = marksToAdd;
+    if (this.addMarks.hasOwnProperty('marks') !== undefined) {
+        this.marks.push(...marksToAdd)
     } else {
             console.log('Студент отчислен');
     }
@@ -31,9 +19,20 @@ Student.prototype.addMarks = function (...marksToAdd) {
 }
 
 Student.prototype.getAverage = function () {
-  
+  if (this.getAverage.hasOwnProperty('marks') === undefined || (this.marks.length < 1) ) {
+    return 0
+  } else { 
+     let sum = 0;
+    for (let i = 0; i < this.marks.length; i++) {
+      sum += this.marks[i];
+    }
+    return sum / this.marks.length
+  }
 }
 
+
 Student.prototype.exclude = function (reason) {
-  
+  delete this.subject;
+  delete this.marks;
+  this.exclude = reason;
 }
