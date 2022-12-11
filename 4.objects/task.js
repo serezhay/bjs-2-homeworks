@@ -10,7 +10,7 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marksToAdd) {
-    if (this.addMarks.hasOwnProperty('marks') !== undefined) {
+    if (this.marks !== undefined) {
         this.marks.push(...marksToAdd)
     } else {
             console.log('Студент отчислен');
@@ -19,7 +19,7 @@ Student.prototype.addMarks = function (...marksToAdd) {
 }
 
 Student.prototype.getAverage = function () {
-  if (this.getAverage.hasOwnProperty('marks') === undefined || (this.marks.length < 1) ) {
+  if (this.marks === undefined || (this.marks.length < 1) ) {
     return 0
   } else { 
      let sum = 0;
@@ -34,5 +34,5 @@ Student.prototype.getAverage = function () {
 Student.prototype.exclude = function (reason) {
   delete this.subject;
   delete this.marks;
-  this.exclude = reason;
+  this.excluded  = reason;
 }
