@@ -10,7 +10,7 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marksToAdd) {
-    if (this.marks !== undefined) {
+    if (this.addMarks.hasOwnProperty('marks') !== undefined) {
         this.marks.push(...marksToAdd)
     } else {
             console.log('Студент отчислен');
