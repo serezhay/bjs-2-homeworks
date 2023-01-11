@@ -26,14 +26,13 @@ function cachingDecoratorNew(func) {
 //Задача № 2
 function debounceDecoratorNew(func, delay) {
   let timeoutId = null;
-  let colDone = true;
+  let cooldown = true;
   wrapper.count = 0;
   wrapper.allCount = 0;
   function wrapper (...args) {
-  let count = 0;
-    if(colDone) {
+    if(cooldown) {
         func(...args);
-        colDone = false;
+        cooldown = false;
         wrapper.count++;
     }
     if (timeoutId) {
